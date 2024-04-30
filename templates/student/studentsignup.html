@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    form {
+      margin: 50px;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .background-image {
+      background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp');
+      background-size: cover;
+      background-position: center;
+      border-top-left-radius: .30rem;
+      border-bottom-left-radius: .30rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 60px;
+      border-radius: 30px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "exam/navbar.html" %}
+
+  <br><br><br>
+  <div class="container">
+    <div class="background-image"></div>
+    <h3 style="text-align: center; color: white;">Student Signup Form</h3>
+    <form method="POST" autocomplete="off" enctype="multipart/form-data" class="form-container">
+      {% csrf_token %}
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">First Name</label>
+          {% render_field userForm.first_name|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="First Name" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last_name">Last Name</label>
+          {% render_field userForm.last_name|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="Last Name" %}
+        </div>
+      </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="mobile">Contact</label>
+            {% render_field studentForm.mobile|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="Contact Number" %}
+          </div>
+          <div class="form-group col-md-6">
+            <label for="address">Address</label>
+            {% render_field studentForm.address|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="Address" %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username">Username</label>
+            {% render_field userForm.username|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="username" %}
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            {% render_field userForm.password|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="password" %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="profile_pic">Profile Picture</label>
+            {% render_field studentForm.profile_pic|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="" %}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg rounded-0">Sign Up</button>
+      </form>
+    </div>
+
+      <!-- Other form fields -->
+
+
+  <br><br>
+  {% include "exam/footer.html" %}
+</body>
+
+</html>
